@@ -23,8 +23,9 @@ module.exports = {
   //   path: __dirname + "/dist"
   // },
   entry: {
-    app: "./src/index.js",
-    components: "./web-components/my-element.js"
+    web_component_polyfills: "./web-component-polyfills/index.js",
+    web_components: "./web-components/index.js",
+    app: "./src/index.js"
     // search: './src/search.js'
   },
   output: {
@@ -34,7 +35,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /src\/(.*)\.js$/,
         use: {
           loader: "babel-loader"
         }
@@ -67,10 +68,13 @@ module.exports = {
   //   })
   // ]
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      filename: "./index.html"
+    }),
     new ScriptExtHtmlWebpackPlugin({
       // module: /\.js$/
-      module: "components.js"
+      module: [/web_components\.js/]
       // defaultAttribute: "async"
     })
   ]
