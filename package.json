@@ -9,6 +9,8 @@
     "start:build": "http-server dist -o"
   },
   "devDependencies": {
+    "@babel/plugin-transform-regenerator": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
     "@open-wc/building-webpack": "^1.4.1",
     "babel-loader": "^8.0.6",
     "html-loader": "^0.5.5",

@@ -1,4 +1,6 @@
 const path = require("path");
+const resolve = require("resolve");
+
 // const createDefaultConfig = require("@open-wc/building-webpack/modern-and-legacy-config");
 
 // // If you don't need IE11 support, use the modern-config instead
@@ -14,6 +16,7 @@ const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  watch: true,
   // entry: {
   //   // main: "/src/index.js"
   // foo: "./web-components/my-element.js"
@@ -35,7 +38,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /src\/(.*)\.js$/,
+        // test: /src\/(.*)\.js$/,
+        test: /\.js$/,
         use: {
           loader: "babel-loader"
         }
@@ -71,11 +75,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "./index.html"
-    }),
-    new ScriptExtHtmlWebpackPlugin({
-      // module: /\.js$/
-      module: [/web_components\.js/]
-      // defaultAttribute: "async"
     })
+    // new ScriptExtHtmlWebpackPlugin({
+    //   // module: /\.js$/
+    //   module: [/web_components\.js/]
+    //   // defaultAttribute: "async"
+    // })
   ]
 };
