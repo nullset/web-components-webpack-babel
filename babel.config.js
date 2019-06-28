@@ -1,7 +1,10 @@
 module.exports = {
   presets: ["@babel/preset-env"],
   plugins: [
-    "@babel/plugin-transform-regenerator"
+    // NOTE: Probably don't need this
+    // "@babel/plugin-transform-regenerator"
+
+
     // "@babel/plugin-syntax-dynamic-import",
     // "@babel/plugin-proposal-object-rest-spread",
     // "@babel/plugin-proposal-class-properties"
