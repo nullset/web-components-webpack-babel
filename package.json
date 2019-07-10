@@ -10,7 +10,6 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-regenerator": "^7.4.4",
-    "@babel/polyfill": "^7.4.4",
     "@open-wc/building-webpack": "^1.4.1",
     "babel-loader": "^8.0.6",
     "html-loader": "^0.5.5",
@@ -22,7 +21,11 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
-    "lit-element": "^2.1.0",
+    "classcat": "^4.0.2",
+    "core-js": "^3.1.4",
+    "dialog-polyfill": "^0.5.0",
+    "lit-element": "^2.2.0",
+    "lit-html": "^1.1.1",
     "script-ext-html-webpack-plugin": "^2.1.3"
   }
 }
