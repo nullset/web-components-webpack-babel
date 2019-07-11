@@ -41,24 +41,22 @@
   background: none;
   box-sizing: border-box;
 
-  &[open] {
+  &--open {
     opacity: 1;
-  }
-
-
-  &--top[open] {
-    &:before {
-      background: rgba(0,0,0,0.5);
-      content: "";
-      position: fixed;
-      z-index: -1;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 100vw;          
-    }
-    .wc__inner {
-      box-shadow: 0 0 6px 6px rgba(0, 0, 0, 0.2);
+   &.wc--top {
+      &:before {
+        background: rgba(0,0,0,0.5);
+        content: "";
+        position: fixed;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;          
+      }
+      .wc__inner {
+        box-shadow: 0 0 6px 6px rgba(0, 0, 0, 0.2);
+      }
     }
   }
 

@@ -10,6 +10,7 @@ import styles from './aha-modal.less';
 
 // import polyfillStyles from '../node_modules/dialog-polyfill/dist/dialog-polyfill';
 
+console.log(styles.toString())
 
 let stackingIndex = 0;
 
@@ -148,6 +149,7 @@ class AhaModal extends LitElement {
     this.focusAndPrefetch(this.ref);
 
     this.ref.showModal();
+
     // NOTE: IE11 does not run any code after .showModal() is called. WTF?
     requestAnimationFrame(() => {
       this.roundTransform();
@@ -182,7 +184,6 @@ class AhaModal extends LitElement {
 
   // Give modal the ability to be "un-cancellable" when the user presses "esc" key.
   handleCancel(e) {
-    debugger;
     e.preventDefault();
     if (!this.preventCancel) {
       // Set "open" property so that property is reflected to attribute.
@@ -269,7 +270,7 @@ class AhaModal extends LitElement {
 
 
     return html`
-      <dialog class="${cc(classes)}" open @cancel="${this.handleCancel}">
+      <dialog class="${cc(classes)}" @cancel="${this.handleCancel}">
         <div class="${cc(innerClasses)}" style="${this.transformMatrix ? `transform: matrix(${this.transformMatrix});` : ''}">
           <div class="wc__header modal-header" hidden @mousedown="${this.handleBeginDrag}">
             <slot name="header"></slot>
