@@ -5,12 +5,15 @@
 import { LitElement, html, css, unsafeCSS } from 'lit-element';
 // import { classMap } from 'lit-html/directives/class-map';
 import cc from 'classcat';
-import dialogPolyfill from 'dialog-polyfill';
+// import dialogPolyfill from 'dialog-polyfill';
+import dialogPolyfill from '../polyfills/dialogPolyfill';
 import styles from './aha-modal.less';
 
 // import polyfillStyles from '../node_modules/dialog-polyfill/dist/dialog-polyfill';
 
-console.log(styles.toString())
+// console.log(styles.toString())
+
+// window.dialogPolyfill = dialogPolyfill;
 
 let stackingIndex = 0;
 
@@ -83,6 +86,15 @@ class AhaModal extends LitElement {
     this.setPart(val, 'footer');
   }
 
+  // connectedCallback() {
+  //   super.connectedCallback();
+  //   debugger;
+  //   document.addEventListener('readystatechange', () => {
+  //     // dialogPolyfill.registerDialog(this.ref);
+  //     debugger;
+  //   });
+  // }
+
   firstUpdated() {
     // Register polyfill for IE11/Safari.
     this.ref = this.host.firstElementChild;
@@ -148,16 +160,22 @@ class AhaModal extends LitElement {
 
     this.focusAndPrefetch(this.ref);
 
+    console.log(this.ref.showModal)
+
+    // FIXME: IE11 not working with showModal. Nothing after fires.
     this.ref.showModal();
+    this.ref.setAttribute('open', '');
 
     // NOTE: IE11 does not run any code after .showModal() is called. WTF?
     requestAnimationFrame(() => {
+      // debugger;
       this.roundTransform();
     });
   }
 
   handleClose() {
     this.open = false;
+    // if (this.ref.hasAttribute('open')) 
     this.ref.close();
     this.openedAt = undefined;
     this.transformMatrix = undefined;
@@ -243,6 +261,7 @@ class AhaModal extends LitElement {
       }, { once: true });
     }
   }
+  
 
   render() {
     const classes = {
