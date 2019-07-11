@@ -162,7 +162,7 @@ dialogPolyfillInfo.prototype = {
    * longer open or is no longer part of the DOM.
    */
   maybeHideModal: function() {
-    if (this.dialog_.hasAttribute('open') && document.body.contains(this.dialog_)) { return; }
+    if (this.dialog_.hasAttribute('open') && (document.body.contains(this.dialog_) || document.body.contains(this.dialog.parentNode.host))) { return; }
     this.downgradeModal();
   },
 
@@ -483,7 +483,6 @@ dialogPolyfill.DialogManager.prototype.blockDocument = function() {
  * dialogs are visible.
  */
 dialogPolyfill.DialogManager.prototype.unblockDocument = function() {
-  alert(123);
   document.documentElement.removeEventListener('focus', this.handleFocus_, true);
   document.removeEventListener('keydown', this.handleKey_);
   this.mo_ && this.mo_.disconnect();
