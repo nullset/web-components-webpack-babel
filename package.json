@@ -1,7 +1,7 @@
 {
-  "name": "open-wc",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "@aha-app/aha-web-components",
+  "version": "0.5.1",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",
