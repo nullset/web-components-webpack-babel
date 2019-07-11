@@ -26,7 +26,7 @@ module.exports = {
   //   path: __dirname + "/dist"
   // },
   entry: {
-    web_component_polyfills: "./web-component-polyfills/index.js",
+    // web_component_polyfills: "./web-component-polyfills/index.js",
     web_components: "./web-components/index.js",
     app: "./src/index.js"
     // search: './src/search.js'
@@ -51,7 +51,25 @@ module.exports = {
             loader: "html-loader"
           }
         ]
-      }
+      },
+      // {
+      //   test: /\.less$/,
+      //   // use: [ 'style-loader', 'postcss-loader', 'less-loader' ]
+      // }
+      {
+        test: /\.less$/,
+        use: [
+          // { 
+          //   loader: 'style-loader' // creates style nodes from JS strings
+          // },
+          {
+            loader: 'css-loader' // translates CSS into CommonJS
+          }, 
+          {
+            loader: 'less-loader' // compiles Less to CSS
+          }
+        ]
+      },
       // {
       //   test: /\/web-components\//,
       //   use: {
